@@ -22,7 +22,3 @@ Adaptive honeypot and threat intelligence platform (university project, team of 
 
 Honeypots run only in a local or isolated lab network. Never expose them to the Internet.
 Commands received by the fake services are never executed.
-
-## References
-
-Inspiration only (no code reused): public honeypot projects such as Cowrie and open-source honeypot platforms.
