@@ -1,0 +1,10 @@
+# Dev override: lets you test from Windows. Ports bound to 127.0.0.1 only.
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+services:
+  http-hp:
+    ports:
+      - "127.0.0.1:8080:8080"
+
+networks:
+  lab:
+    internal: false

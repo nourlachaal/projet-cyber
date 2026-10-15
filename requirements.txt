@@ -1,0 +1,5 @@
+asyncssh
+aiohttp
+pydantic>=2
+pytest
+ruff

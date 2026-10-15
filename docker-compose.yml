@@ -1,0 +1,14 @@
+# Base file: honeypots on an INTERNAL network (no Internet access, no published ports).
+services:
+  http-hp:
+    build: .
+    command: python -m honeypots.http_hp.server
+    environment:
+      HP_LOG_PATH: /app/data/events.jsonl
+    volumes:
+      - ./data:/app/data
+    networks: [lab]
+
+networks:
+  lab:
+    internal: true

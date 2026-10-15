@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets and local config
+.env
+*.key
+ssh_host_key
+ssh_host_key.pub
+
+# Runtime data (logs, captured events)
+data/*
+!data/.gitkeep
+
+# Editors / OS
+.idea/
+Thumbs.db
