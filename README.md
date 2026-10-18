@@ -22,3 +22,10 @@ Adaptive honeypot and threat intelligence platform (university project, team of 
 
 Honeypots run only in a local or isolated lab network. Never expose them to the Internet.
 Commands received by the fake services are never executed.
+
+
+## Documentation
+
+- [Documentation du backend](docs/backend.md)
+- [Schéma des événements](docs/event-schema.md)
+- [Modèle de sécurité](docs/security-model.md)

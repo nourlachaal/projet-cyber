@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any, Literal
 from uuid import uuid4
 
@@ -9,7 +9,7 @@ class Event(BaseModel):
     """Canonical event shared by all honeypots. See docs/event-schema.md."""
 
     event_id: str = Field(default_factory=lambda: str(uuid4()))
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(UTC))
     service: Literal["ssh", "http", "api", "ftp", "redis", "mysql", "smb"]
     event_type: str
     source_ip: str

@@ -1,5 +1,8 @@
-asyncssh
 aiohttp
+asyncssh
+fastapi
 pydantic>=2
 pytest
+redis
 ruff
+uvicorn[standard]
