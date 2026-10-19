@@ -1,12 +1,29 @@
-# Base file: honeypots on an INTERNAL network (no Internet access, no published ports).
+# Honeypots live on an INTERNAL network: no internet, no published ports.
+x-honeypot: &honeypot
+  build: .
+  environment:
+    HP_LOG_PATH: /app/data/events.jsonl
+    HP_BIND_HOST: 0.0.0.0
+  volumes:
+    - ./data:/app/data
+  networks: [lab]
+  read_only: true
+  tmpfs: [/tmp]
+  cap_drop: [ALL]
+  security_opt: ["no-new-privileges:true"]
+  mem_limit: 256m
+  pids_limit: 128
+
 services:
   http-hp:
-    build: .
+    <<: *honeypot
     command: python -m honeypots.http_hp.server
-    environment:
-      HP_LOG_PATH: /app/data/events.jsonl
+
+  attacker:
+    build: .
+    profiles: [attacker]
     volumes:
-      - ./data:/app/data
+      - ./scenarios:/app/scenarios:ro
     networks: [lab]
 
   postgres:
@@ -17,7 +34,7 @@ services:
       POSTGRES_DB: hive
     volumes:
       - pgdata:/var/lib/postgresql/data
-    networks: [lab]
+    networks: [db]
 
 volumes:
   pgdata:
@@ -25,3 +42,4 @@ volumes:
 networks:
   lab:
     internal: true
+  db: {}
