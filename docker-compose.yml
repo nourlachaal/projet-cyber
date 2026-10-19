@@ -9,6 +9,19 @@ services:
       - ./data:/app/data
     networks: [lab]
 
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: hive
+      POSTGRES_PASSWORD: hive      # lab only
+      POSTGRES_DB: hive
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [lab]
+
+volumes:
+  pgdata:
+
 networks:
   lab:
     internal: true
